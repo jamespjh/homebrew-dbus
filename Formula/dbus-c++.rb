@@ -12,6 +12,7 @@ class DbusCxx <Formula
   depends_on :automake
   depends_on :autoconf
   depends_on :libtool
+  depends_on "glib"
   depends_on "pkg-config"
  # depends_on 'libpthread'
   def install
@@ -19,7 +20,7 @@ class DbusCxx <Formula
     ENV["TMPDIR"] = "/tmp"
     system "sed -i -e '28,33 d' bootstrap"
     system "autoreconf -sif"
-    system "./configure", "--prefix=#{prefix}", "--disable-doxygen-docs"
+    system "./configure", "--disable-ecore", "--prefix=#{prefix}", "--disable-doxygen-docs"
     system "make install"
 
     # Generate D-Bus's UUID for this machine
