@@ -11,6 +11,7 @@ class DbusCxx <Formula
   depends_on 'd-bus'
   depends_on :automake
   depends_on :autoconf
+  depends_on :libtool
  # depends_on 'libpthread'
   def install
     # Fix the TMPDIR to one D-Bus doesn't reject due to odd symbols
