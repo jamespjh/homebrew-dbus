@@ -18,7 +18,8 @@ class DbusCxx <Formula
   def install
     # Fix the TMPDIR to one D-Bus doesn't reject due to odd symbols
     ENV["TMPDIR"] = "/tmp"
-    system "autoreconf -sif"
+    system "sed -i -e 's/libtool/glibtool/' bootstrap"
+    system "./bootstrap"
     system "./configure", "--disable-ecore", "--prefix=#{prefix}", "--disable-doxygen-docs"
     system "make install"
 
