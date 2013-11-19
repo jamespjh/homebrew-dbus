@@ -54,7 +54,7 @@ index b5b5536..e95402d 100644
 +
  namespace DBus
  {
- 
+
 diff --git a/include/dbus-c++/types.h b/include/dbus-c++/types.h
 index 044e72b..24bbfa4 100644
 --- a/include/dbus-c++/types.h
@@ -77,29 +77,29 @@ index 044e72b..24bbfa4 100644
 +//http://clang.llvm.org/compatibility.html#dep_lookup
 +} /* namespace DBus */
  #endif//__DBUSXX_TYPES_H
-diff --git a/src/eventloop-integration.cpp b/src/eventloop-integration.cpp
-index 0cc65c3..1c9fb57 100644
---- a/src/eventloop-integration.cpp
-+++ b/src/eventloop-integration.cpp
-@@ -23,7 +23,7 @@
- 
- #ifdef HAVE_CONFIG_H
- #include <config.h>
--#endif
-+#endif //HAVE_CONFIG_H
- 
- /* Project */
- #include <dbus-c++/eventloop-integration.h>
-@@ -38,6 +38,9 @@
- #include <cassert>
- #include <sys/poll.h>
- #include <fcntl.h>
-+#ifdef HAVE_UNISTD_H
-+#include <unistd.h>
-+#endif //HAVE_UNISTD_H
- 
- using namespace DBus;
- using namespace std;
+ diff --git a/src/eventloop-integration.cpp b/src/eventloop-integration.cpp
+ index 0cc65c3..1c9fb57 100644
+ --- a/src/eventloop-integration.cpp
+ +++ b/src/eventloop-integration.cpp
+ @@ -23,7 +23,7 @@
+
+  #ifdef HAVE_CONFIG_H
+  #include <config.h>
+ -#endif
+ +#endif //HAVE_CONFIG_H
+
+  /* Project */
+  #include <dbus-c++/eventloop-integration.h>
+ @@ -38,6 +38,9 @@
+  #include <cassert>
+  #include <sys/poll.h>
+  #include <fcntl.h>
+ +#ifdef HAVE_UNISTD_H
+ +#include <unistd.h>
+ +#endif //HAVE_UNISTD_H
+
+  using namespace DBus;
+  using namespace std;
 diff --git a/include/dbus-c++/pipe.h b/include/dbus-c++/pipe.h
 index 999f042..41d3629 100644
 --- a/include/dbus-c++/pipe.h
