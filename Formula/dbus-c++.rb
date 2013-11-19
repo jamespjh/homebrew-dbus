@@ -18,9 +18,9 @@ class DbusCxx <Formula
   def install
     # Fix the TMPDIR to one D-Bus doesn't reject due to odd symbols
     ENV["TMPDIR"] = "/tmp"
-    system "sed -i -e 's/libtool/glibtool/' bootstrap"
-    system "sed -i -e 's/HOST_NAME_MAX/_POSIX_HOST_NAME_MAX/' examples/echo/echo-server.cpp"
-    system "sed -i -e s/PTHREAD_RECURSIVE_MUTEX_INITIALIZER_NP/PTHREAD_RECURSIVE_MUTEX_INITIALIZER/ src/eventloop.cpp"
+    inreplace 'bootstrap', 'libtool', 'glibtool'
+    inreplace 'examples/echo/echo-server.cpp', 'HOST_NAME_MAX', "_POSIX_HOST_NAME_MAX"
+    inreplace 'src/eventloop.cpp', 'PTHREAD_RECURSIVE_MUTEX_INITIALIZER_NP', 'PTHREAD_RECURSIVE_MUTEX_INITIALIZER'
     system "autoreconf -sif"
     system "./configure", "--disable-ecore", "--prefix=#{prefix}", "--disable-doxygen-docs"
     # Need to add <unistd.h> to get unix headers
