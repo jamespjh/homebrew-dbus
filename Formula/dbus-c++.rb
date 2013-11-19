@@ -34,7 +34,7 @@ class DbusCxx <Formula
     #system "#{bin}/dbus-uuidgen", "--ensure=#{prefix}/var/lib/dbus/machine-id"
   end
 end
-__END__  
+__END__
 diff --git a/include/dbus-c++/dispatcher.h b/include/dbus-c++/dispatcher.h
 index b5b5536..e95402d 100644
 --- a/include/dbus-c++/dispatcher.h
